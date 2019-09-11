@@ -4,7 +4,6 @@ from typing import Dict, List, Tuple
 from random import randint
 from functools import reduce
 
-
 class Perceptron(object):
     def __init__(self, input_number: int, bias_input: List[float] = [], input_weights: List[float] = []):
         self.input_weight: List[float] = input_weights
@@ -29,12 +28,12 @@ class Perceptron(object):
         agg_input = reduce(lambda x, y: (1, x[0]*x[1]+y[0]*y[1]), input_weight)
         return self.step_function(agg_input[1])
 
-test = Perceptron(3, [1], [-.3, .21, .15])
+# test = Perceptron(3, [1], [-.3, .21, .15])
 class XOR_neural_net(object):
     def __init__(self):
-        self.input_layer = [Perceptron(3, [1], [-.3, .21, .15]),
-                    Perceptron(3, [1], [.25, -.4, .1])]
-        self.output_layer = [Perceptron(3, [1], [-.4, -.2, .3])]
+        self.input_layer = [Perceptron(3, [1]),
+                    Perceptron(3, [1])]
+        self.output_layer = [Perceptron(3, [1])]
         self.train_input: List[Tuple[List[float], List[float]]] = [
              ([0, 0], [0]),
             ([0, 1], [1]),
