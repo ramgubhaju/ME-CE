@@ -5,5 +5,5 @@ The only configuration is the number of epoch, which is change in line `xor_obj.
 
 ## How to execute
 ```
-python3 /path/to/your/codefile.py
+python3 /path/to/your/xor_backprop.py
 ```
