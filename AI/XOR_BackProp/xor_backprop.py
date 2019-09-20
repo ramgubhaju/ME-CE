@@ -9,7 +9,7 @@ class Perceptron(object):
         self.input_weight: List[float] = input_weights
         if not self.input_weight:
             self.input_weight = [
-                randint(-50, 50)*.01 for i in range(input_number)]
+                randint(-50, 50)*.01 for i in range(input_number+1)]
         # self.input_weight:List[float]=[-.3,.21,.15]
         self.bias_input: List[float] = bias_input
         self.output: float = 0
