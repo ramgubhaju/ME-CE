@@ -2,4 +2,4 @@
 *.pyc
 .env/*
 .mypy*/*
-
+*.dot

@@ -1,3 +1,6 @@
+# To run the program
+# python3 /path/to/file/xor_backprop.py
+
 import math
 
 from typing import Dict, List, Tuple
@@ -26,14 +29,14 @@ class Perceptron(object):
     def test(self,inputs:List[float]):
         input_weight = zip(self.input_weight, self.bias_input+inputs)
         agg_input = reduce(lambda x, y: (1, x[0]*x[1]+y[0]*y[1]), input_weight)
-        return self.step_function(agg_input[1])
+        return self.step_function(agg_input[1])#(1 if abs(1.0-self.step_function(agg_input[1]))<.3 else 0)
 
 # test = Perceptron(3, [1], [-.3, .21, .15])
 class XOR_neural_net(object):
     def __init__(self):
-        self.input_layer = [Perceptron(3, [1]),
-                    Perceptron(3, [1])]
-        self.output_layer = [Perceptron(3, [1])]
+        self.input_layer = [Perceptron(3, [1],[-0.35, 0.17, -0.27, 0.46]),
+                    Perceptron(3, [1],[0.0, -0.08, 0.21, -0.49])]
+        self.output_layer = [Perceptron(3, [1],[0.49, 0.03, 0.12, -0.1])]
         self.train_input: List[Tuple[List[float], List[float]]] = [
              ([0, 0], [0]),
             ([0, 1], [1]),
@@ -123,9 +126,10 @@ class XOR_neural_net(object):
 
 xor_obj=XOR_neural_net()
 xor_obj.output_weight()
-xor_obj.train(10000)
+xor_obj.train(50000)
 print("Final weights")
 xor_obj.output_weight()
+print("\nTest the perceptron")
 print(f"input: 0,0 ouput {xor_obj.test([0,0])}")
 print(f"input: 0,1 ouput {xor_obj.test([0,1])}")
 print(f"input: 1,0 ouput {xor_obj.test([1,0])}")
